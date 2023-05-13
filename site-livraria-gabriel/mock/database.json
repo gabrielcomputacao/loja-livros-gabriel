@@ -1,0 +1,74 @@
+{
+    "livros": [
+        {
+            "id": 1,
+            "titulo": "Harry Potter" ,
+            "descricao": "Harry Potter é uma série de sete romances de fantasia escrita pela autora britânica J. K. Rowling. A série narra as aventuras de um jovem chamado Harry James Potter, que descobre aos 11 anos de idade que é um bruxo ao ser convidado para estudar na Escola de Magia e Bruxaria de Hogwarts." ,
+            "preço": 45.00,
+            "categoria": "Fantasia"
+        },
+        {
+            "id": 2,
+            "titulo": "Nárnia" ,
+            "descricao": "s Crônicas de Nárnia / Portugal: As Crónicas de Nárnia, é uma série de sete romances de alta fantasia, escrita pelo autor irlandês C. S. Lewis" ,
+            "preço": 35.00,
+            "categoria": "Fantasia"
+        },
+        {
+            "id": 3,
+            "titulo": "O Senhor dos Anéis" ,
+            "descricao": "O Senhor dos Anéis é um livro de alta fantasia, escrito pelo escritor britânico J. R. R. Tolkien. Escrita entre 1937 e 1949, com muitas partes criadas durante a Segunda Guerra Mundial, a saga é uma continuação de O Hobbit." ,
+            "preço": 45.00,
+            "categoria": "Fantasia"
+        },
+        {
+            "id": 4,
+            "titulo": "O Poder do Hábito" ,
+            "descricao": "O Poder do Hábito: por que fazemos o que fazemos na vida e nos negócios é um livro de Charles Duhigg, ex-repórter do New York Times, publicado em Fevereiro de 2012 pela Random Hous." ,
+            "preço": 45.00,
+            "categoria": "Autoajuda"
+        },
+        {
+            "id": 5,
+            "titulo": "O Homem Mais Rico da Babilônia" ,
+            "descricao": "O Homem Mais Rico da Babilônia é um livro escrito por George S. Clason" ,
+            "preço": 45.00,
+            "categoria": "Autoajuda"
+        },
+        {
+            "id": 6,
+            "titulo": "Geração de valor 1" ,
+            "descricao": "HDesde que nascem, as pessoas são treinadas para agir de acordo com o senso comum. O ensino convencional as estimula a buscar segurança, e não liberdade." ,
+            "preço": 45.00,
+            "categoria": "Autoajuda"
+        },
+        {
+            "id": 7,
+            "titulo": "Trabalhe 4 Horas por Semana" ,
+            "descricao": "Esqueça o velho conceito de trabalho. Não espere chegar a aposentadoria para começar a aproveitar a vida. Se o seu sonho é escapar da rotina, experimentar grandes viagens pelo mundo, ter uma renda mensal de cinco dígitos ou apenas viver mais e trabalhar menos," ,
+            "preço": 45.00,
+            "categoria": "Autoajuda"
+        },
+        {
+            "id": 8,
+            "titulo": "Marley & Eur" ,
+            "descricao": "Marley & Eu é um livro dos Estados Unidos considerado best seller escrito pelo escritor e jornalista norte-americano John Grogan, baseado numa história real, que conta a vida e o amor de seu dono pelo Pior Cão do Mundo." ,
+            "preço": 45.00,
+            "categoria": "Romance"
+        },
+        {
+            "id": 9,
+            "titulo": "O Segredo" ,
+            "descricao": "Você tem em suas mãos um Grande Segredo...Ao longo dos séculos, os fragmentos de um Grande Segredo estiveram presentes nas tradições orais, na literatura, nas religiões e nas correntes filosóficas da humanidade" ,
+            "preço": 45.00,
+            "categoria": "Autoajuda"
+        },
+        {
+            "id": 10,
+            "titulo": "O Investidor Inteligente" ,
+            "descricao": "Maior consultor de investimentos do século XX, Benjamin Graham ensinou e inspirou milhares de pessoas ao redor do mundo. Seu conceito de “valor de investimento” protege os investidores de cometer erros substanciais e os ensina a desenvolver estratégias de longo prazo. Isso fez com que O investidor inteligente se tornasse a bíblia do mercado de ações desde sua primeira publicação, em 1949." ,
+            "preço": 45.00,
+            "categoria": "Investimento"
+        }
+    ]
+}
