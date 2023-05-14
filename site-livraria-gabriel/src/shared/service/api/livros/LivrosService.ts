@@ -1,7 +1,7 @@
 import { Api } from "../axios-config";
 
 
-interface IListaLivros{
+export interface IListaLivros{
     id: number,
     titulo: string,
     descricao: string,
@@ -9,7 +9,7 @@ interface IListaLivros{
     categoria: string
 }
 
-type TListaLivros = {
+export type TListaLivros = {
     data: IListaLivros[],
 
 }
@@ -18,10 +18,10 @@ const getAll = async (): Promise<TListaLivros | Error> => {
 
     try {
         
-        const {data} = await Api.get('/livros');
+        const result = await Api.get('/livros');
 
-        if(data){
-            return data;
+        if(result){
+            return result;
         }
 
         return new Error('Erro ao lista os registros');
