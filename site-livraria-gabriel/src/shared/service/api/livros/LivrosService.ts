@@ -31,8 +31,31 @@ const getAll = async (): Promise<TListaLivros | Error> => {
 
 };
 
+const getById = async (id: number): Promise<IListaLivros | Error> =>{
+
+    try {
+
+        if(id === 0){
+            return {} as IListaLivros;
+        }
+
+        const {data} = await Api.get(`/livros/${id}`);
+
+        if(data){
+            return data;
+        }
+
+        return new Error('Error ao fazer consulta por ID');
+    } catch (error) {
+        console.log(error);
+        return new Error((error as {message:string}).message || 'Error ao fazer consultra por ID');
+    }
+
+}
+
 
 
 export const LivrosService = {
-    getAll
+    getAll,
+    getById
 }

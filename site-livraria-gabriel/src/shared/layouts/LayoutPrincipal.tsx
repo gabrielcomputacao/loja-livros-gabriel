@@ -14,7 +14,7 @@ export const LayoutPrincipal: React.FC<ILayoutPrincipalProps> = ({children}) =>{
     return (
         <>
             <Header />
-            <Box minHeight="700px" padding=".7em">
+            <Box minHeight="700px" padding="1.4em">
                 {children}  
             </Box>
             <Footer />

@@ -1,8 +1,8 @@
 
 
 import { Routes,Route,Navigate } from 'react-router-dom';
-import { Home } from '../pages';
-import { Livros } from '../shared/components';
+import { Home,Livros, Livro  } from '../pages';
+
 
 export const AppRoutes = () =>{
 
@@ -10,6 +10,7 @@ export const AppRoutes = () =>{
         <Routes>
             <Route path='/home' element={<Home />} />
             <Route path='/livros' element={<Livros />} />
+            <Route path='/livro/:id' element={<Livro />} />
             <Route path='*' element={<Navigate to="/home" />} />
         </Routes>
     );

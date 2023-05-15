@@ -7,8 +7,8 @@ import { brown, green } from "@mui/material/colors";
         palette:{
             primary:{
                 main: green[500] ,
-                dark: green[700] ,
-                light: green[400] ,
+                dark: green[400] ,
+                light: green[300] ,
                 contrastText: '#fff'
             },
             secondary:{
