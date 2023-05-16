@@ -6,7 +6,8 @@ export interface IListaLivros{
     titulo: string,
     descricao: string,
     preco: number,
-    categoria: string
+    categoria: string,
+    quantidade?: number
 }
 
 export type TListaLivros = {

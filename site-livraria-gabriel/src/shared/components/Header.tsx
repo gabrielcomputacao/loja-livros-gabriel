@@ -3,17 +3,22 @@ import HomeIcon from "@mui/icons-material/Home";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { observer } from "mobx-react";
+import storeLivros from "../../store/store";
 
 
-export const Header = () => {
+
+
+export const Header = observer(() => {
 
   const navigate = useNavigate();
-  const [quantidadeCarrinho, setQuantidadeCarrinho] = useState(0);
+  const {listaLivros} = storeLivros;
 
   const handleClick = (to: string)=>{
     navigate(to);
   }
+
+  
 
   return (
     <Box display="flex" flexDirection="row" alignItems="center" justifyContent="space-between"  width="100%"  bgcolor="primary.dark" color="#222">
@@ -48,10 +53,10 @@ export const Header = () => {
           <ListItemIcon>
             <LocalGroceryStoreIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText>{quantidadeCarrinho}  Carrinho</ListItemText>
+          <ListItemText>{listaLivros.length > 0 ? listaLivros.length : 0}  Carrinho</ListItemText>
         </MenuItem>
       </MenuList>
       </Box>
     </Box>
   );
-};
+});
