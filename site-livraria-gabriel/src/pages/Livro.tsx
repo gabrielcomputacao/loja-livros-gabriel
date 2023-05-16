@@ -1,11 +1,8 @@
-import {
-  Box,
-  InputLabel,
-  MenuItem,
-  Typography,
-} from "@mui/material";
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Box, Typography } from "@mui/material";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import { LayoutPrincipal } from "../shared/layouts";
 import { useParams } from "react-router-dom";
@@ -15,16 +12,14 @@ import {
   LivrosService,
 } from "../shared/service/api/livros/LivrosService";
 import storeLivros from "../store/store";
-
-
+import { red } from "@mui/material/colors";
 
 export const Livro = () => {
   const params = useParams();
   const [livro, setLivro] = useState<IListaLivros>({} as IListaLivros);
-  const [quantidade, setQuantidade] = useState<number>(0);
-  const [addSuccess, setAddSuccess] = useState(false);
-  
-
+  const [quantidade, setQuantidade] = useState('');
+  const [addMessage, setAddMessage] = useState('');
+  const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   useEffect(() => {
     let idNumber: number = 0;
@@ -44,21 +39,34 @@ export const Livro = () => {
   }, []);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setQuantidade(parseInt(event.target.value));
-    setLivro( prevLivro =>({
-      ...prevLivro,
-      quantidade: parseInt(event.target.value) 
-    }));
+    if (event.target.value !== "") {
+
+      setQuantidade(event.target.value);
+      setLivro((prevLivro) => ({
+        ...prevLivro,
+        quantidade: parseInt(event.target.value),
+      }
+      
+      ));
+    }
   };
 
-  const handleAddSuccess = ()=>{
-    setAddSuccess(true);
+  const handleAddSuccess = (text: string) => {
+    setAddMessage(text);
 
-    setTimeout(()=>{
-      setAddSuccess(false);
-    },4000);
-  }
+    setTimeout(() => {
+      setAddMessage('');
+    }, 4000);
+  };
 
+  const inserirLivroArray = () =>{
+    if(livro.quantidade){
+      storeLivros.addLivro(livro);
+      handleAddSuccess('success');
+    }else{
+      handleAddSuccess('failed')
+    }
+  } 
 
   return (
     <LayoutPrincipal>
@@ -71,36 +79,56 @@ export const Livro = () => {
           <Typography variant="h6">Preço: R$ {livro.preco}</Typography>
           <Typography variant="h6">Categoria: {livro.categoria}</Typography>
 
-          {
-            addSuccess && 
-            <Box padding=".9em" border="1px solid" borderColor="primary.main" width="300px" margin="1.5em 0">
-              <Typography variant="h6" color="primary.main">Adicionado com Sucesso!</Typography>
+          {addMessage === 'success' && (
+            <Box
+              padding=".9em"
+              border="1px solid"
+              borderColor="primary.main"
+              width="300px"
+              margin="1.5em 0"
+            >
+              <Typography variant="h6" color="primary.main">
+                Adicionado com Sucesso!
+              </Typography>
             </Box>
-          }
+          ) 
+}
+          {  addMessage === 'failed' && (
+            <Box
+              padding=".9em"
+              border="1px solid"
+              borderColor={red[600]}
+              width="300px"
+              margin="1.5em 0"
+            >
+              <Typography variant="h6" color={red[600]}>
+                Produto Não adicionado!
+              </Typography>
+              <Typography variant="body1" >
+                Coloque a quantidade do produto.
+              </Typography>
+            </Box>
+          )
+        
+        }
 
           <Box width="200px" margin="1.5em 0">
-            <FormControl  fullWidth>
-              <InputLabel id="quant-campo">Quantidade</InputLabel>
+            <FormControl fullWidth>
+              <InputLabel id="quantidade-text">Quantidade</InputLabel>
               <Select
-               labelId="quant-campo"
-               id="quant"
+                labelId="quantidade-text"
+                id="quantidade"
                 value={quantidade.toString()}
                 label="Quantidade"
                 onChange={handleChange}
-                
+                defaultValue="Selecione..."
               >
-                <MenuItem value={1}>
-                  <em>1</em>
-                </MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
-                <MenuItem value={6}>6</MenuItem>
-                <MenuItem value={7}>7</MenuItem>
-                <MenuItem value={8}>8</MenuItem>
-                <MenuItem value={9}>9</MenuItem>
-                <MenuItem value={10}>10</MenuItem>
+                {options.map((option) => (
+                  
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
           </Box>
@@ -115,7 +143,6 @@ export const Livro = () => {
           border="1px solid #292929"
           borderRadius="2px"
           padding=".5em"
-          
         >
           <Typography
             variant="h5"
@@ -125,10 +152,14 @@ export const Livro = () => {
           >
             Preço: R$ {livro.preco}
           </Typography>
-          <Button onClick={() => {
-            storeLivros.addLivro(livro);
-            handleAddSuccess();
-          }} size="medium" color="secondary">
+          <Button
+            onClick={() => {
+              inserirLivroArray();
+              
+            }}
+            size="medium"
+            color="secondary"
+          >
             Adicionar ao Carrinho
           </Button>
           <Button onClick={() => {}} size="medium" color="secondary">

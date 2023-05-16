@@ -49,7 +49,9 @@ export const Header = observer(() => {
           </ListItemIcon>
           <ListItemText>Livros</ListItemText>
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={ ()=>{
+          handleClick("/carrinho");
+        } }>
           <ListItemIcon>
             <LocalGroceryStoreIcon fontSize="small" />
           </ListItemIcon>
