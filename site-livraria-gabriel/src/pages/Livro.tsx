@@ -13,6 +13,8 @@ import {
 } from "../shared/service/api/livros/LivrosService";
 import storeLivros from "../store/store";
 import { red } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
+
 
 export const Livro = () => {
   const params = useParams();
@@ -20,6 +22,7 @@ export const Livro = () => {
   const [quantidade, setQuantidade] = useState('');
   const [addMessage, setAddMessage] = useState('');
   const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const navigate = useNavigate();
 
   useEffect(() => {
     let idNumber: number = 0;
@@ -67,6 +70,10 @@ export const Livro = () => {
       handleAddSuccess('failed')
     }
   } 
+
+  const handleClick = (to: string)=>{
+    navigate(to);
+  }
 
   return (
     <LayoutPrincipal>
@@ -162,7 +169,9 @@ export const Livro = () => {
           >
             Adicionar ao Carrinho
           </Button>
-          <Button onClick={() => {}} size="medium" color="secondary">
+          <Button onClick={() => {
+              handleClick('/compra');
+          }} size="medium" color="secondary">
             Fechar Pedido
           </Button>
         </Box>
