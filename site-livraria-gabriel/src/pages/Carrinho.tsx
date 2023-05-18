@@ -61,7 +61,7 @@ export const Carrinho = observer( () => {
             handleClick('/compra');
           }}>Fechar Pedido</Button>
           <Box marginTop="2em">
-            <Typography variant="h5" textAlign="center"> Valor Total: R${precoTotalSomado} </Typography>
+            <Typography variant="h5" textAlign="center"> Valor Total: R$ {precoTotalSomado.toFixed(2).replace('.',',') }  </Typography>
           </Box>
         </Box>
       </Box>

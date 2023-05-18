@@ -2,6 +2,7 @@ import { Box, Button, Grid, Skeleton, Typography } from "@mui/material";
 import { LayoutPrincipal } from "../shared/layouts";
 import storeLivros from "../store/store";
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export const FecharCompra = () => {
@@ -10,7 +11,7 @@ export const FecharCompra = () => {
     storeLivros.precoTotalCalculado()
   );
   const [finalizarCompras, setFinalizarCompras] = useState(false);
- 
+  const navigate = useNavigate();
 
   const finalizar = () => {
     setFinalizarCompras(true);
@@ -18,7 +19,10 @@ export const FecharCompra = () => {
     setTimeout(() => {
 
     setFinalizarCompras(false);
-    window.location.reload();
+  
+    storeLivros.reset();
+
+    navigate('/home');
     
     }, 5000);
 

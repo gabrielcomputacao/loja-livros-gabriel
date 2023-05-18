@@ -50,6 +50,16 @@ export const Livro = () => {
     }
   };
 
+  const handleKeyPress = (event: { keyCode: any; which: any; preventDefault: () => void; }) =>{
+    const chave = event.keyCode || event.which;
+    const chaveValor = String.fromCharCode(chave);
+    const numericRegex = /^[0-9\b]+$/;
+
+    if(!numericRegex.test(chaveValor)){
+      event.preventDefault();
+    }
+  }
+
   const handleAddSuccess = (text: string) => {
     setAddMessage(text);
 
@@ -119,24 +129,11 @@ export const Livro = () => {
             <FormControl fullWidth>
               <TextField
               onChange={handleChange}
+              onKeyPress={handleKeyPress}
               type="number"
               placeholder="Quantidade"
               />
-              {/* <Select
-                labelId="quantidade-text"
-                id="quantidade"
-                value={quantidade.toString()}
-                label="Quantidade"
-                onChange={handleChange}
-                defaultValue="Selecione..."
-              >
-                {options.map((option) => (
-                  
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </Select> */}
+              
             </FormControl>
           </Box>
         </Box>

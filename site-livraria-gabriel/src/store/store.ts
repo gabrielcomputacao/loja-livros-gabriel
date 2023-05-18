@@ -17,6 +17,7 @@ import { IListaLivros } from "../shared/service/api/livros/LivrosService";
                 precoTotal: observable,
                 addLivro: action,
                 precoTotalCalculado: action,
+                reset: action,
                 qtdLivrosDistintos: computed,
             })
         }
@@ -47,6 +48,12 @@ import { IListaLivros } from "../shared/service/api/livros/LivrosService";
                 return  this.precoTotal;
 
             }
+        }
+
+        reset(){
+            this.listaLivros = [];
+            this.listaIdLivrosDistintos = [];
+            this.precoTotal = 0;
         }
 
         get qtdLivrosDistintos(){
