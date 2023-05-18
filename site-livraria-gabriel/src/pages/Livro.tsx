@@ -1,4 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import { LayoutPrincipal } from "../shared/layouts";
@@ -18,6 +18,9 @@ export const Livro = () => {
   const [livro, setLivro] = useState<IListaLivros>({} as IListaLivros);
   const [addMessage, setAddMessage] = useState('');
   const navigate = useNavigate();
+
+  const theme = useTheme();
+  const lgDown = useMediaQuery(theme.breakpoints.down('lg'));
 
   useEffect(() => {
     let idNumber: number = 0;
@@ -84,7 +87,7 @@ export const Livro = () => {
   return (
     <LayoutPrincipal>
       <Box display="flex" justifyContent="center" flexWrap="wrap" gap="1em">
-        <Box width="55%">
+        <Box width={lgDown ? '95%' : '55%' }>
           <Typography variant="h3">{livro.titulo}</Typography>
           <Typography variant="body1" padding="1em 0">
             {livro.descricao}
@@ -97,7 +100,8 @@ export const Livro = () => {
               padding=".9em"
               border="1px solid"
               borderColor="primary.main"
-              width="300px"
+              width="auto"
+              maxWidth="300px"
               margin="1.5em 0"
             >
               <Typography variant="h6" color="primary.main">
@@ -111,7 +115,8 @@ export const Livro = () => {
               padding=".9em"
               border="1px solid"
               borderColor={red[600]}
-              width="300px"
+              width="auto"
+              maxWidth="300px"
               margin="1.5em 0"
             >
               <Typography variant="h6" color={red[600]}>
@@ -143,16 +148,17 @@ export const Livro = () => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          width="22%"
+          width={lgDown ? 'auto' : '22%' }
           border="1px solid #292929"
           borderRadius="2px"
-          padding=".5em"
+          padding={lgDown ? '1.5em .5em' : '.5em' }
         >
           <Typography
             variant="h5"
             bgcolor="primary.light"
-            padding=".2em"
+            padding=".4em"
             textAlign="center"
+            borderRadius="5px"
           >
             Preço: R$ {livro.preco}
           </Typography>

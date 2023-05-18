@@ -1,15 +1,17 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { LayoutPrincipal } from "../shared/layouts";
 
 export const Home = () => {
+
+  const theme = useTheme();
+  const lgDown = useMediaQuery(theme.breakpoints.down('lg'));
+
+
   return (
     <>
       <LayoutPrincipal>
         <Box display="flex" justifyContent="center" gap="1.5em" flexWrap="wrap">
-          <Box width="45%">
-                <img width="100%" src={`${process.env.PUBLIC_URL}/assets/images/livraria.jpg`} alt="Livraria Gabriel" title="Livraria Gabriel" />
-          </Box>
-          <Box width="45%">
+        <Box width={ lgDown ? '100%' : '45%' }>
             <Typography
               variant="h1"
               fontSize="42px"
@@ -33,6 +35,10 @@ export const Home = () => {
               aventurar por mundos imaginários.
             </Typography>
           </Box>
+          <Box width = { lgDown ? '100%' : '45%' } >
+                <img width="100%" src={`${process.env.PUBLIC_URL}/assets/images/livraria.jpg`} alt="Livraria Gabriel" title="Livraria Gabriel" />
+          </Box>
+          
         </Box>
       </LayoutPrincipal>
     </>

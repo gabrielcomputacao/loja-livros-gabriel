@@ -21,7 +21,6 @@ export const Livros = () => {
     navigate(to);
   }
 
-
   useEffect(() => {
     LivrosService.getAll().then((result) => {
       if (result instanceof Error) {
