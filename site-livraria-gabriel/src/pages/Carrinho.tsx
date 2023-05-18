@@ -45,7 +45,7 @@ export const Carrinho = observer( () => {
                 <Typography variant="body2" padding=".7em 0">
                   Descrição: {livro.descricao}
                 </Typography>
-                <Typography variant="h6">Preço: R$ {livro.preco}</Typography>
+                <Typography variant="h6">Preço: R$ {livro.preco.toFixed(2).replace('.',',')}</Typography>
                 <Typography variant="h6">
                   Categoria: {livro.categoria}
                 </Typography>

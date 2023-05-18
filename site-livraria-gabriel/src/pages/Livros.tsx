@@ -46,7 +46,7 @@ export const Livros = () => {
                   Descrição:  {livro.descricao}
                 </Typography>
                 <Typography variant="h6">
-                   Preço: R$ {livro.preco}
+                   Preço: R$ {livro.preco.toFixed(2).replace('.',',')}
                 </Typography>
                 <Typography variant="h6">
                    Categoria: {livro.categoria}
