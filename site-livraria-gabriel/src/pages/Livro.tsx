@@ -1,8 +1,5 @@
 import { Box, TextField, Typography } from "@mui/material";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import { LayoutPrincipal } from "../shared/layouts";
 import { useParams } from "react-router-dom";
@@ -19,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 export const Livro = () => {
   const params = useParams();
   const [livro, setLivro] = useState<IListaLivros>({} as IListaLivros);
-  const [quantidade, setQuantidade] = useState('');
   const [addMessage, setAddMessage] = useState('');
   const navigate = useNavigate();
 
@@ -42,10 +38,9 @@ export const Livro = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value !== "") {
-
+      
       const valorNumerico = event.target.value.replace('/[^0-9]/g','')
 
-      setQuantidade(valorNumerico);
       setLivro((prevLivro) => ({
         ...prevLivro,
         quantidade: parseInt(valorNumerico),
