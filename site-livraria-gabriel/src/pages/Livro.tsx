@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -21,7 +21,6 @@ export const Livro = () => {
   const [livro, setLivro] = useState<IListaLivros>({} as IListaLivros);
   const [quantidade, setQuantidade] = useState('');
   const [addMessage, setAddMessage] = useState('');
-  const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,13 +40,15 @@ export const Livro = () => {
     });
   }, []);
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value !== "") {
 
-      setQuantidade(event.target.value);
+      const valorNumerico = event.target.value.replace('/[^0-9]/g','')
+
+      setQuantidade(valorNumerico);
       setLivro((prevLivro) => ({
         ...prevLivro,
-        quantidade: parseInt(event.target.value),
+        quantidade: parseInt(valorNumerico),
       }
       
       ));
@@ -121,8 +122,12 @@ export const Livro = () => {
 
           <Box width="200px" margin="1.5em 0">
             <FormControl fullWidth>
-              <InputLabel id="quantidade-text">Quantidade</InputLabel>
-              <Select
+              <TextField
+              onChange={handleChange}
+              type="number"
+              placeholder="Quantidade"
+              />
+              {/* <Select
                 labelId="quantidade-text"
                 id="quantidade"
                 value={quantidade.toString()}
@@ -136,7 +141,7 @@ export const Livro = () => {
                     {option}
                   </MenuItem>
                 ))}
-              </Select>
+              </Select> */}
             </FormControl>
           </Box>
         </Box>
