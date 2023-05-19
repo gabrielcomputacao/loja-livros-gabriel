@@ -13,6 +13,8 @@ export const Carrinho = observer( () => {
    navigate(to);
  }
 
+ 
+
  const precoTotalSomado = useMemo( () =>{
 
       return storeLivros.precoTotalCalculado();
@@ -56,7 +58,10 @@ export const Carrinho = observer( () => {
             </Card>
           ))}
         </Box>
-        <Box height="100vh" margin="2em 0">
+        <Box height="100vh" margin="2em 0"  display="flex"
+          flexDirection="column"
+          flexWrap="wrap"
+          alignItems="center">
           <Button variant="contained" onClick={()=>{
             handleClick('/compra');
           }}>Fechar Pedido</Button>
