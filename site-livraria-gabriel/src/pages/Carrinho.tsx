@@ -38,8 +38,8 @@ export const Carrinho = observer( () => {
           width="70%"
           alignSelf="start"
         >
-          {listaLivros.map((livro) => (
-            <Card key={livro.id} sx={{ width: '100%'}}>
+          {listaLivros.map((livro,index) => (
+            <Card key={index} sx={{ width: '100%'}}>
               <CardContent>
                 <Typography variant="h5">Título: {livro.titulo}</Typography>
                 <Typography variant="body2" padding=".7em 0">

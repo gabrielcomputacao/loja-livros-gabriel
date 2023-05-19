@@ -72,8 +72,8 @@ export const FecharCompra = () => {
 
           <Grid container spacing={2}>
             <Grid item xs={12} md={12}>
-              {listaLivros.map((livro) => (
-                <Typography  padding=".4em" bgcolor="secondary.light" key={livro.id} sx={{ mt: 4, mb: 2, width: "93%" }} variant="h6">
+              {listaLivros.map((livro,index) => (
+                <Typography  padding=".4em" bgcolor="secondary.light" key={index} sx={{ mt: 4, mb: 2, width: "93%" }} variant="h6">
                   {livro.titulo} - preço: R$
                   {livro.preco.toFixed(2).replace(".", ",")} - quantidade:
                   {livro.quantidade}
